@@ -1,5 +1,5 @@
 import { IonicModule } from '@ionic/angular';
-import { LoginPage } from './login.page';
+import { LoginComponent } from './login.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -10,6 +10,6 @@ import { NgModule } from '@angular/core';
     CommonModule,
     FormsModule
   ],
-  declarations: [LoginPage]
+  declarations: [LoginComponent]
 })
 export class LoginPageModule {}

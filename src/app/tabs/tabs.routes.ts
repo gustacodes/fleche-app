@@ -3,24 +3,30 @@ import { TabsPage } from './tabs.page';
 
 export const routes: Routes = [
   {
-    path: 'tabs',
+    path: 'fleche',
     component: TabsPage,
     children: [
       {
         path: 'login',
         loadComponent: () =>
-          import('../login/login.page').then((m) => m.LoginPage),
+          import('../components/login/login.component').then((m) => m.LoginComponent),
+      },
+      {
+        path: 'cadastro',
+        loadComponent: () => 
+          import('../components/cadastro/cadastro.component').then((m) => m.CadastroComponent),
+        
       },
       {
         path: '',
-        redirectTo: '/tabs/login',
+        redirectTo: '/fleche/login',
         pathMatch: 'full',
       },
     ],
   },
   {
     path: '',
-    redirectTo: '/tabs/login',
+    redirectTo: '/fleche/login',
     pathMatch: 'full',
   },
 ];

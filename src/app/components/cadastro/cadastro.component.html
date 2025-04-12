@@ -1,0 +1,62 @@
+<ion-content class="cadastro-background" [fullscreen]="true">
+  <div class="cadastro-container">
+    <img src="assets/img/logo.png" alt="Fleche logo" class="cadastro-logo" />
+
+    <ion-item class="custom-input">
+      <ion-input
+        [(ngModel)]="usuario.nome"
+        name="nome"
+        placeholder="Nome"
+        type="text"
+        fill="outline"
+        mode="md">
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="custom-input">
+      <ion-input
+        [(ngModel)]="usuario.email"
+        name="email"
+        placeholder="Email"
+        type="email"
+        fill="outline"
+        mode="md">
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="custom-input">
+      <ion-input
+        [(ngModel)]="usuario.numero"
+        name="numero"
+        placeholder="Telefone"
+        type="tel"
+        fill="outline"
+        mode="md">
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="custom-input">
+      <ion-input
+        [(ngModel)]="usuario.senha"
+        name="senha"
+        placeholder="Senha"
+        type="password"
+        fill="outline"
+        mode="md">
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="custom-input" lines="inset">
+      <ion-label position="stacked">Data de nascimento</ion-label>
+      <ion-input
+        [(ngModel)]="usuario.dataNascimento"
+        name="dataNascimento"
+        type="date">
+      </ion-input>
+    </ion-item>
+
+    <ion-button expand="block" class="cadastro-button" (click)="cadastrar()">
+      Cadastrar
+    </ion-button>
+  </div>
+</ion-content>
