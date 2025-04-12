@@ -8,8 +8,7 @@ import { NgModule } from '@angular/core';
   imports: [
     IonicModule,
     CommonModule,
-    FormsModule,
-    // outros módulos necessários
+    FormsModule
   ],
   declarations: [LoginPage]
 })

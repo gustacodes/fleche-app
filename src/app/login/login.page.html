@@ -5,6 +5,7 @@
 
     <ion-item class="custom-input">
       <ion-input
+        #telInput
         placeholder="Email ou telefone"
         type="email"
         fill="outline"
@@ -14,6 +15,7 @@
     
     <ion-item class="custom-input">
       <ion-input
+        #senhaInput
         placeholder="Senha"
         type="password"
         fill="outline"
@@ -21,7 +23,7 @@
       </ion-input>
     </ion-item>
     
-    <ion-button expand="block" class="login-button">
+    <ion-button expand="block" class="login-button" (click)="logar(telInput.value!.toString(), senhaInput.value!.toString())">
       Flechar
     </ion-button>
 
