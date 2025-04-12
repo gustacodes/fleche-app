@@ -13,7 +13,7 @@ export class LoginPage {
 
   constructor(private loginService: LoginService) {}
 
-  logar(telefone: string | null | undefined, senha: string | null | undefined) {
-    this.loginService.createPost(telefone, senha).subscribe();
+  logar(tel: string, senha: string) {
+    this.loginService.createPost(tel, senha).subscribe();
   }
 }

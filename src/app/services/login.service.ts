@@ -12,7 +12,7 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  createPost(telefone: string | null | undefined, senha: string | null | undefined): Observable<any> {
+  createPost(telefone: string, senha: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/auth/post/${telefone}/${senha}`, null);
   }
 
