@@ -1,21 +1,20 @@
 <ion-content [fullscreen]="true" class="like-dislike-container">
   <div class="card-container">
     <img src="assets/img/logo.png" alt="Fleche logo" class="principal-logo" />
-    <ion-card class="card">
-      <img src="assets/img/eu.png" alt="Profile Image" />
-      <ion-card-header>
-        <ion-card-title class="idade">33</ion-card-title>
-        <ion-card-title>Gustavo Henrique</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>Sou pobre, feio, moro longe e ando a pé</p>
-      </ion-card-content>
-    </ion-card>
-  </div>
+    <!-- <ion-card class="card"> -->
+      <div class="foto-wrapper">
+        <img src="assets/img/minha-foto.png" alt="Profile Image" class="foto-principal"/>
+        
+        <div class="texto-sobre-imagem">          
+          <div class="nome">Gustavo Henrique</div>
+          <div class="genero">Masculino, 33</div>
+        </div>
 
-  <div class="buttons">
-    <img src="assets/img/dislike.png" alt="Dislike" class="img-dislike" />
-    <img src="assets/img/like.png" alt="Like" class="img-like" />
+        <div class="buttons">
+          <img src="assets/img/dislike.png" alt="Dislike" class="img-dislike" (click)="handleDislike()"/>
+          <img src="assets/img/like.png" alt="Like" class="img-like" (click)="handleLike()"/>
+        </div>  
+      </div>
+    <!-- </ion-card> -->
   </div>
-  
 </ion-content>
