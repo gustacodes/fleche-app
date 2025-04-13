@@ -18,6 +18,12 @@ export const routes: Routes = [
         
       },
       {
+        path: 'tela-principal',
+        loadComponent: () => 
+          import('../components/tela-principal/tela-principal.component').then((m) => m.TelaPrincipalComponent),
+        
+      },
+      {
         path: '',
         redirectTo: '/fleche/login',
         pathMatch: 'full',

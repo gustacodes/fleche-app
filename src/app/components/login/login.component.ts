@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [IonicModule], // <-- AQUI
+  imports: [IonicModule],
   templateUrl: 'login.component.html',
   styleUrls: ['login.component.scss']
 })
@@ -21,4 +21,5 @@ export class LoginComponent {
   irParaCadastro() {
     this.router.navigate(['fleche/cadastro']);
   }
+
 }
