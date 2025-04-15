@@ -1,7 +1,7 @@
 <ion-content class="meus-dados-background">
   <div class="meus-dados-container">
     <div class="foto-perfil-wrapper">
-      <img src="assets/img/eu.png" alt="Foto de Perfil" class="meus-dados-foto-perfil" />
+      <img *ngIf="fotoUrl" [src]="fotoUrl" class="meus-dados-foto-perfil" />
       <img src="assets/img/camera.png" alt="Alterar Foto" class="meus-dados-camera" />
     </div>
     

@@ -11,7 +11,7 @@
 
 .cadastro-container {
   text-align: center;
-  padding: 100px 20px;
+  padding: 30px 20px;
   width: 100%;
   max-width: 360px;
   margin: 0 auto;
@@ -95,3 +95,30 @@
   text-decoration: none;
 }
 
+.file-input {
+  --highlight-color-focused: #f72585;
+
+  .upload-input {
+    border: none;
+    background-color: transparent;
+    color: #ffffff;
+    padding: 8px 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+
+    &::file-selector-button {
+      background-color: #f72585;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    &::file-selector-button:hover {
+      background-color: #c41e6a;
+    }
+  }
+}

@@ -6,9 +6,9 @@ import { NgModule } from '@angular/core';
 @NgModule({
   declarations: [],
   imports: [
-    IonicModule,
     CommonModule,
+    IonicModule,
     FormsModule
-  ],
+  ]
 })
 export class MeusDadosModule { }

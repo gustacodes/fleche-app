@@ -55,6 +55,11 @@
       </ion-input>
     </ion-item>
 
+    <ion-item class="custom-input file-input" lines="inset">
+      <ion-label position="stacked">Foto de Perfil</ion-label>
+      <input type="file" (change)="onFileSelected($event)" class="upload-input">
+    </ion-item>
+
     <ion-button expand="block" class="cadastro-button" (click)="cadastrar()">
       Cadastrar
     </ion-button>

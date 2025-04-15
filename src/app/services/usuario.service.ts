@@ -13,7 +13,12 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) { }
 
-  cadastrarUsuario(usuario: Usuario): Observable<any> {
-    return this.http.post(`${this.apiUrl}/auth/singup`, usuario);
+  upload(formData : FormData) : Observable<any> {
+    return this.http.post(`${this.apiUrl}/auth/singup`, formData);
   }
+
+  getFoto(id: number): Observable<Blob> {
+    return this.http.get(`${this.apiUrl}/usuarios/foto/${id}`, { responseType: 'blob' });
+  }  
+
 }
