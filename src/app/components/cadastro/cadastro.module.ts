@@ -1,6 +1,6 @@
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CadastroComponent } from './cadastro.component';
 
@@ -8,7 +8,8 @@ import { CadastroComponent } from './cadastro.component';
   imports: [
     IonicModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [CadastroComponent]
 })
