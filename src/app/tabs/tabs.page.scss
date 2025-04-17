@@ -1,11 +1,22 @@
-ion-tab-bar, ion-tab-button  {
+ion-tab-bar {
     padding-top: 10px;
     background-color: #f04069;
     border: none;
     color: white;
-}
-
-ion-icon {
-    height: 30px;
-    width: 30px;
-}
+    display: flex;
+    justify-content: space-around; /* Espaça uniformemente os itens */
+    align-items: center; /* Centraliza verticalmente */
+  }
+  
+  .icon-chat {
+    height: 60px;
+    width: 60px;
+    padding-bottom: 5px;
+  }
+  
+  .icon-profile {
+    height: 40px;
+    width: 40px;
+    padding-bottom: 5px;
+  }
+  

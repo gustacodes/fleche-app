@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-ion-content.like-dislike-container {
-  --background: linear-gradient(to bottom, #3c1874, #3c1874) !important;
-  display: flex;
+ion-content.like-dislike-container::part(scroll) {
+  background: 
+    linear-gradient(to bottom, rgba(60, 24, 116, 0.8), rgba(60, 24, 116, 0.8)),
+    url('/assets/img/background.png') no-repeat center center / cover;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 30px;
+  padding-top: 80px;
 }
-
 
 .card-container {
   width: 90%;
@@ -50,7 +50,7 @@ ion-card-title {
   .foto-wrapper {
     position: relative;
     width: 100%;
-    height: 70vh; /* Ocupa quase toda a altura da tela */
+    height: 75vh;
     overflow: hidden;
     border-radius: 10px;
   }
@@ -60,18 +60,22 @@ ion-card-title {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
+    position: relative;
+    z-index: 1; /* base da pilha */
   }
   
-  /* Gradiente para dar contraste no texto */
+  /* Gradiente sobre a imagem */
   .foto-wrapper::after {
     content: "";
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 20%;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+    height: 40%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 5.0), transparent);
     pointer-events: none;
+    z-index: 2; /* acima da imagem, abaixo do texto/botões */
   }
   
   /* Texto sobre a imagem */
@@ -82,7 +86,8 @@ ion-card-title {
     color: white;
     font-family: Poppins;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
-  }  
+    z-index: 3; /* acima do gradiente */
+  }
   
   .texto-sobre-imagem .idade {
     font-size: 18px;
@@ -95,11 +100,16 @@ ion-card-title {
   }
   
   .texto-sobre-imagem .genero {
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 400;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: white;
+    border-radius: 8px;
+    padding: 1px 8px;
+    display: inline-block;
   }
- 
-  /* Botões dentro da imagem */
+  
+  /* Botões */
   .buttons {
     position: absolute;
     bottom: 30px;
@@ -107,14 +117,15 @@ ion-card-title {
     transform: translateX(-50%);
     display: flex;
     gap: 50px;
-    z-index: 2;
+    z-index: 3; /* acima de tudo */
   }
+  
   
   .img-like,
   .img-dislike {
     width: 60px;
     height: 60px;
-    border: 3px solid #f04069;
+    border: 1px solid #f04069;
     border-radius: 50%;
     transition: transform 0.2s ease, box-shadow 0.3s ease;
     cursor: pointer;

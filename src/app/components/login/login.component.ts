@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
@@ -11,11 +11,13 @@ import { Router } from '@angular/router';
   styleUrls: ['login.component.scss']
 })
 export class LoginComponent {
-
+  
   constructor(private loginService: LoginService, private router: Router) {}
 
   logar(tel: string, senha: string) {
-    this.loginService.createPost(tel, senha).subscribe();
+    this.loginService.login(tel, senha).subscribe(response => { 
+      this.router.navigate(['fleche/tela-principal', response]);
+    });
   }
 
   irParaCadastro() {

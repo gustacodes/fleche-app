@@ -1,18 +1,19 @@
+
 <ion-content [fullscreen]="true" class="like-dislike-container">
   <div class="card-container">
-    <img src="assets/img/logo.png" alt="Fleche logo" class="principal-logo" />
+    <!-- <img src="assets/img/logo.png" alt="Fleche logo" class="principal-logo" /> -->
     <!-- <ion-card class="card"> -->
       <div class="foto-wrapper">
-        <img src="assets/img/minha-foto.png" alt="Profile Image" class="foto-principal"/>
+        <img *ngIf="fotoUrl" [src]="fotoUrl" alt="Profile Image" class="foto-principal" />
         
         <div class="texto-sobre-imagem">          
-          <div class="nome">Gustavo Henrique</div>
-          <div class="genero">Masculino, 33</div>
+          <div class="nome">{{ usuarioOnline?.nome }}</div>
+          <div class="genero">{{ usuarioOnline?.genero | titlecase }}, {{ usuarioOnline?.idade }}</div>
         </div>
 
         <div class="buttons">
-          <img src="assets/img/dislike.png" alt="Dislike" class="img-dislike" (click)="handleDislike()"/>
-          <img src="assets/img/like.png" alt="Like" class="img-like" (click)="handleLike()"/>
+          <img src="assets/img/dislike.png" alt="Dislike" class="img-dislike" (click)="dislike()"/>
+          <img src="assets/img/like.png" alt="Like" class="img-like" (click)="like()"/>
         </div>  
       </div>
     <!-- </ion-card> -->

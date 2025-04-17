@@ -12,8 +12,8 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  createPost(telefone: string, senha: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/auth/post/${telefone}/${senha}`, null);
+  login(numero: string, senha: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/auth/login/${numero}/${senha}`, null);
   }
 
 }

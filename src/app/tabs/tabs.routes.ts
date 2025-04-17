@@ -18,7 +18,7 @@ export const routes: Routes = [
         
       },
       {
-        path: 'tela-principal',
+        path: 'tela-principal/:id',
         loadComponent: () => 
           import('../components/tela-principal/tela-principal.component').then((m) => m.TelaPrincipalComponent),
         

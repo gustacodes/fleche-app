@@ -11,7 +11,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   imports: [IonicModule, FormsModule, CommonModule, ReactiveFormsModule],
   styleUrls: ['./cadastro.component.scss'],
 })
-export class CadastroComponent implements OnInit {
+export class CadastroComponent {
 
   fotoSelecionada: File | null = null;
   cadastroForm: FormGroup;
@@ -27,25 +27,41 @@ export class CadastroComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
-
   onFileSelected(event: any) {
     const file = event.target.files[0];
     if (file) {
-      this.fotoSelecionada = file;
       this.cadastroForm.patchValue({ foto: file });
+      this.cadastroForm.get('foto')?.updateValueAndValidity();
     }
-  }
+  }  
 
   cadastrar() {
     if (this.cadastroForm.valid) {
       const dados = this.cadastroForm.value;
-      this.usuarioService.upload(dados).subscribe(resposta => {
-        console.log(resposta);
-      });
+      const formData = new FormData();
+  
+      formData.append('nome', dados.nome);
+      formData.append('email', dados.email);
+      formData.append('numero', dados.numero);
+      formData.append('senha', dados.senha);
+      formData.append('dataNascimento', dados.dataNascimento);
+  
+      if (dados.foto) {
+        formData.append('foto', dados.foto);
+      }
+  
+      this.usuarioService.cadastro(formData).subscribe(
+        resposta => {
+          console.log('Usuário cadastrado com sucesso:', resposta);
+        },
+        erro => {
+          console.error('Erro ao cadastrar:', erro);
+        }
+      );
     } else {
       this.cadastroForm.markAllAsTouched();
     }
   }
+  
 
 }

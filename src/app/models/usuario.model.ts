@@ -5,3 +5,9 @@ export interface Usuario {
     senha: string,
     dataNascimento: string
 }
+
+export interface UsuarioOnline {
+    nome: string,
+    genero: string,
+    idade: number
+}
