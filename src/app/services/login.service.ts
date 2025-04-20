@@ -16,4 +16,8 @@ export class LoginService {
     return this.http.post(`${this.apiUrl}/auth/login/${numero}/${senha}`, null);
   }
 
+  teste(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/auth/teste`);
+  }
+
 }

@@ -20,6 +20,7 @@ export class LoginComponent {
     });
   }
 
+
   irParaCadastro() {
     this.router.navigate(['fleche/cadastro']);
   }

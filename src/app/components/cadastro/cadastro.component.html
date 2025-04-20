@@ -1,79 +1,79 @@
-<ion-content class="cadastro-background" [fullscreen]="true">
+<div class="cadastro-background">
   <form [formGroup]="cadastroForm" (ngSubmit)="cadastrar()">
     <div class="cadastro-container">
       <img src="assets/img/logo.png" alt="Fleche logo" class="cadastro-logo" />
 
-      <ion-item class="custom-input">
-        <ion-input
+      <div class="custom-input">
+        <input
+          class="inp"
           formControlName="nome"
           placeholder="Nome"
           type="text"
           fill="outline"
-          mode="md">
-        </ion-input>
-      </ion-item>
-      <ion-text class="danger" *ngIf="cadastroForm.get('nome')?.touched && cadastroForm.get('nome')?.invalid">
+          mode="md" />
+      </div>
+      <label class="danger" *ngIf="cadastroForm.get('nome')?.touched && cadastroForm.get('nome')?.invalid">
         Nome é obrigatório.
-      </ion-text>
+      </label>
 
-      <ion-item class="custom-input">
-        <ion-input
+      <div class="custom-input">
+        <input
+          class="inp"
           formControlName="email"
           placeholder="Email"
           type="email"
           fill="outline"
-          mode="md">
-        </ion-input>
-      </ion-item>
-      <ion-text class="danger" *ngIf="cadastroForm.get('email')?.touched && cadastroForm.get('email')?.invalid">
+          mode="md" />
+      </div>
+      <label class="danger" *ngIf="cadastroForm.get('email')?.touched && cadastroForm.get('email')?.invalid">
         Email inválido.
-      </ion-text>
+      </label>
 
-      <ion-item class="custom-input">
-        <ion-input
+      <div class="custom-input">
+        <input
+        class="inp"
           formControlName="numero"
           placeholder="Telefone"
           type="tel"
           fill="outline"
-          mode="md">
-        </ion-input>
-      </ion-item>
-      <ion-text class="danger" *ngIf="cadastroForm.get('numero')?.touched && cadastroForm.get('numero')?.invalid">
+          mode="md" />
+      </div>
+      <label class="danger" *ngIf="cadastroForm.get('numero')?.touched && cadastroForm.get('numero')?.invalid">
         Telefone inválido.
-      </ion-text>
+      </label>
 
-      <ion-item class="custom-input">
-        <ion-input
+      <div class="custom-input">
+        <input
+          class="inp"
           formControlName="senha"
           placeholder="Senha"
           type="password"
           fill="outline"
-          mode="md">
-        </ion-input>
-      </ion-item>
-      <ion-text class="danger" *ngIf="cadastroForm.get('senha')?.touched && cadastroForm.get('senha')?.invalid">
+          mode="md"/>
+      </div>
+      <label class="danger" *ngIf="cadastroForm.get('senha')?.touched && cadastroForm.get('senha')?.invalid">
         Senha deve ter no mínimo 6 caracteres.
-      </ion-text>
+      </label>
 
-      <ion-item class="custom-input" lines="inset">
-        <ion-label position="stacked">Data de nascimento</ion-label>
-        <ion-input
+      <div class="custom-input">
+        <label position="stacked">Data de nascimento</label>
+        <input
+          class="inp"
           formControlName="dataNascimento"
-          type="date">
-        </ion-input>
-      </ion-item>
-      <ion-text class="danger" *ngIf="cadastroForm.get('dataNascimento')?.touched && cadastroForm.get('dataNascimento')?.invalid">
+          type="date"/>
+      </div>
+      <label class="danger" *ngIf="cadastroForm.get('dataNascimento')?.touched && cadastroForm.get('dataNascimento')?.invalid">
         Data de nascimento é obrigatória.
-      </ion-text>
+      </label>
 
-      <ion-item class="custom-input file-input" lines="inset">
-        <ion-label position="stacked">Escolha sua melhor foto</ion-label>
+      <div class="custom-input file-input" lines="inset">
+        <label position="stacked">Escolha sua melhor foto</label>
         <input type="file" (change)="onFileSelected($event)" class="upload-input">
-      </ion-item>
+      </div>
 
-      <ion-button expand="block" class="cadastro-button" type="submit">
+      <button class="cadastro-button" type="submit">
         Cadastrar
-      </ion-button>
+      </button>
     </div>
   </form>
-</ion-content>
+</div>

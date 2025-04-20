@@ -1,8 +1,5 @@
-
-<ion-content [fullscreen]="true" class="like-dislike-container">
+<div class="like-dislike-container">
   <div class="card-container">
-    <!-- <img src="assets/img/logo.png" alt="Fleche logo" class="principal-logo" /> -->
-    <!-- <ion-card class="card"> -->
       <div class="foto-wrapper">
         <img *ngIf="fotoUrl" [src]="fotoUrl" alt="Profile Image" class="foto-principal" />
         
@@ -16,6 +13,6 @@
           <img src="assets/img/like.png" alt="Like" class="img-like" (click)="like()"/>
         </div>  
       </div>
-    <!-- </ion-card> -->
+
   </div>
-</ion-content>
+</div>
