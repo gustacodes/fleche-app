@@ -1,7 +1,7 @@
 export interface DadosUsuario {
     nome: string,
     email: string,
-    telefone: string,
+    numero: string,
     genero: string,
     preferencia: string
 }

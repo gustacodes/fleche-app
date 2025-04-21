@@ -17,7 +17,7 @@ export class MeusDadosComponent implements OnInit {
   dadosUsuario: DadosUsuario = {
     nome: '',
     email: '',
-    telefone: '',
+    numero: '',
     genero: '',
     preferencia: ''
   };  
@@ -60,8 +60,6 @@ export class MeusDadosComponent implements OnInit {
     }
   ];
   
-  
-
   constructor(private dadosService: MeusDadosService) {}
 
   ngOnInit() {
@@ -74,9 +72,7 @@ export class MeusDadosComponent implements OnInit {
   }
 
   getDadosUsuario(id: number) {
-    this.dadosService.getDadosUsuario(id).subscribe(response => {
-      console.log(response);
-      
+    this.dadosService.getDadosUsuario(id).subscribe(response => {      
       this.formFields.find(f => f.label === 'Nome')!.value = response.nome;
       this.formFields.find(f => f.label === 'Email')!.value = response.email;
       this.formFields.find(f => f.label === 'Telefone')!.value = response.numero;
@@ -84,8 +80,21 @@ export class MeusDadosComponent implements OnInit {
       this.formFields.find(f => f.label === 'Preferência')!.value = response.preferencia;
     });
   }
+
+  coletarDadosAtualizados(): DadosUsuario {
+    return {
+      nome: this.formFields.find(f => f.label === 'Nome')?.value || '',
+      email: this.formFields.find(f => f.label === 'Email')?.value || '',
+      numero: this.formFields.find(f => f.label === 'Telefone')?.value || '',
+      genero: this.formFields.find(f => f.label === 'Gênero')?.value || '',
+      preferencia: this.formFields.find(f => f.label === 'Preferência')?.value || ''
+    };
+  }
   
-  
+  salvarAlteracoes() {
+    const dadosAtualizados = this.coletarDadosAtualizados();  
+    this.dadosService.updateDadosUsuario(dadosAtualizados, 7).subscribe();
+  }  
 
   carregarFoto(id: number) {
     this.dadosService.getFoto(id).subscribe(blob => {

@@ -43,9 +43,7 @@ export class TelaPrincipalComponent {
     } else {
       console.error('ID não encontrado na rota!');
     }
-    this.ide += 1;
-    console.log(this.ide);
-    
+    this.ide += 1;    
     console.log('Like! 💚');
   }
 
