@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Usuario } from '../models/usuario.model';
+import { Usuario } from '../interfaces/usuario';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class UsuarioService {
 
-  private apiUrl = environment.url;
+  private apiUrl = `http://${window.location.hostname}:8080`;
 
   constructor(private http: HttpClient) { }
 
@@ -22,7 +22,7 @@ export class UsuarioService {
   }
 
   getUsuariosOnline(usuarioId: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/sessao/online/${usuarioId}?page=0&size=100`);
+    return this.http.get(`${this.apiUrl}/sessao/usuarios/disponiveis/${usuarioId}?page=0&size=100`);
   }
 
 }

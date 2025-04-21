@@ -15,11 +15,10 @@ export class LoginComponent {
   constructor(private loginService: LoginService, private router: Router) {}
 
   logar(tel: string, senha: string) {
-    this.loginService.login(tel, senha).subscribe(response => { 
-      this.router.navigate(['fleche/tela-principal', response]);
+    this.loginService.login(tel, senha).subscribe(() => { 
+      this.router.navigate(['fleche/bares']);
     });
   }
-
 
   irParaCadastro() {
     this.router.navigate(['fleche/cadastro']);

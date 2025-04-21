@@ -1,22 +1,24 @@
 
 .like-dislike-container {
+  min-height: 100vh; /* 👈 garante que ocupe a altura total da tela */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* ou center, se quiser centralizar */
+  align-items: center;
+  padding-top: 80px;
   background: 
     linear-gradient(to bottom, rgba(60, 24, 116, 0.8), rgba(60, 24, 116, 0.8)),
     url('/assets/img/background.png') no-repeat center center / cover;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 150px;
 }
 
 .card-container {
   width: 90%;
   max-width: 400px;
-  justify-content: space-between;
-  margin-bottom: 30px;
-  margin-left: 13px;
-  padding-left: 10px;
-  
+  margin: 0 auto; /* centraliza horizontalmente */
+  padding: 0; /* remove padding lateral */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .buttons {
@@ -50,19 +52,18 @@ ion-card-title {
   .foto-wrapper {
     position: relative;
     width: 100%;
-    height: 75vh;
+    height: 80vh;
     overflow: hidden;
     border-radius: 10px;
   }
   
   .foto-principal {
-    border: none;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* 👈 cobre o espaço mantendo proporção */
     display: block;
     position: relative;
-    z-index: 1; /* base da pilha */
+    z-index: 1;
   }
   
   /* Gradiente sobre a imagem */
@@ -81,7 +82,7 @@ ion-card-title {
   /* Texto sobre a imagem */
   .texto-sobre-imagem {
     position: absolute;
-    bottom: 100px;
+    bottom: 120px;
     left: 20px;
     color: white;
     font-family: Poppins;
@@ -112,7 +113,7 @@ ion-card-title {
   /* Botões */
   .buttons {
     position: absolute;
-    bottom: 30px;
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;

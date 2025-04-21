@@ -23,11 +23,16 @@ export const routes: Routes = [
           import('../components/tela-principal/tela-principal.component').then((m) => m.TelaPrincipalComponent),
         
       },
-
       {
         path: 'meus-dados',
         loadComponent: () => 
           import('../components/meus-dados/meus-dados.component').then((m) => m.MeusDadosComponent),
+        
+      },
+      {
+        path: 'bares',
+        loadComponent: () => 
+          import('../components/bares/bares.component').then((m) => m.BaresComponent),
         
       },
       {

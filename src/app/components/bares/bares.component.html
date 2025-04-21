@@ -1,0 +1,20 @@
+<div class="container">
+  <h1 class="title">Bares Cadastrados</h1>
+
+  <div class="bar-card" *ngFor="let bar of bares; let i = index">
+    <div class="bar-info">
+      <h2 class="bar-name">{{ bar.nome }}</h2>
+      <p class="online-count">🟢 {{ bar.usuariosOnline }} online</p>
+      <button class="view-button" (click)="toggleDetalhes(i)">
+        {{ bar.mostrarDetalhes ? 'Ocultar' : 'Ver detalhes' }}
+      </button>
+    </div>
+
+    <div class="bar-details" *ngIf="bar.mostrarDetalhes">
+      <p><strong>Endereço:</strong> {{ bar.endereco }}</p>
+      <p><strong>Bairro:</strong> {{ bar.bairro }}</p>
+      <p><strong>Número:</strong> {{ bar.numero }}</p>
+      <p><strong>Cidade:</strong> {{ bar.cidade }}</p>
+    </div>
+  </div>
+</div>

@@ -1,18 +1,56 @@
-<ion-content class="meus-dados-background" [fullscreen]="true">
-  <div class="meus-dados-container">
-    <div class="foto-perfil-wrapper">
-      <img *ngIf="fotoUrl" [src]="fotoUrl" class="meus-dados-foto-perfil" />
-      <img src="assets/img/camera.png" alt="Alterar Foto" class="meus-dados-camera" />
-    </div>
-    
-    <ion-label>Gustavo Henrique, 33</ion-label>
-    <hr>
-
-  <div class="meus-dados-content">
-    <label class="meus-dados">gustavo&#64;email.com</label>
-     <!-- <ion-button expand="block" class="meus-dados-button">
-      Entrar
-    </ion-button> -->
+<div class="profile-container">
+  <div class="avatar-wrapper">
+    <img *ngIf="fotoUrl" [src]="fotoUrl" alt="Avatar" class="avatar" />
+    <label class="meus-dados-camera">
+      <input type="file" hidden />
+      <img src="assets/img/camera.png" alt="Alterar Foto" />
+    </label>
   </div>
+
+  <div class="form-group" *ngFor="let field of formFields">
+    <label>{{ field.label }}</label>
+    <div class="input-edit-wrapper" [class.editing]="field.editable">
+      <ng-container [ngSwitch]="field.type">
+        <input
+          *ngSwitchCase="'text'"
+          type="text"
+          [placeholder]="field.placeholder"
+          [(ngModel)]="field.value"
+          [disabled]="!field.editable"
+        />
+        <input
+          *ngSwitchCase="'email'"
+          type="email"
+          [placeholder]="field.placeholder"
+          [(ngModel)]="field.value"
+          [disabled]="!field.editable"
+        />
+        <input
+          *ngSwitchCase="'tel'"
+          type="tel"
+          [placeholder]="field.placeholder"
+          [(ngModel)]="field.value"
+          [disabled]="!field.editable"
+        />
+        <select
+        *ngSwitchCase="'select'"
+        [disabled]="!field.editable"
+        [(ngModel)]="field.value"
+        >
+        <option *ngFor="let option of field.options" [value]="option">
+          {{ option }}
+        </option>
+      </select>
+
+
+
+      </ng-container>
+
+      <button type="button" class="edit-button" (click)="toggleEdit(field)">
+        <img src="assets/img/edit.png" alt="Editar Campo" />
+      </button>
+    </div>
+  </div>
+
+  <button class="save-button">Salvar</button>
 </div>
-</ion-content>
