@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { DadosUsuario } from 'src/app/interfaces/usuario-dados';
 import { MeusDadosService } from 'src/app/services/meus-dados.service';
@@ -119,7 +120,8 @@ export class MeusDadosComponent implements OnInit {
     }
   
     this.dadosService.updateDadosUsuario(formData, 7).subscribe(() => {
-      console.log('Dados atualizados com sucesso');
+      this.getDadosUsuario(7); 
+      this.carregarFoto(7);
     });
   }  
 
