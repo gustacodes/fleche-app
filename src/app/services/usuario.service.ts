@@ -18,7 +18,7 @@ export class UsuarioService {
   }
 
   getFoto(id: number): Observable<Blob> {
-    return this.http.get(`${this.apiUrl}/usuarios/foto/${id}`, { responseType: 'blob' });
+    return this.http.get(`${this.apiUrl}/usuario/${id}/foto`, { responseType: 'blob' });
   }
 
   getUsuariosOnline(usuarioId: number): Observable<any> {

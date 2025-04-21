@@ -14,6 +14,7 @@ import { MeusDadosService } from 'src/app/services/meus-dados.service';
 })
 export class MeusDadosComponent implements OnInit {
   fotoUrl: string | null = null;
+  fotoArquivo: File | null = null;
   dadosUsuario: DadosUsuario = {
     nome: '',
     email: '',
@@ -71,6 +72,18 @@ export class MeusDadosComponent implements OnInit {
     field.editable = !field.editable;
   }
 
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.fotoArquivo = file;
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.fotoUrl = reader.result as string;
+      };
+      reader.readAsDataURL(file);
+    }
+  } 
+
   getDadosUsuario(id: number) {
     this.dadosService.getDadosUsuario(id).subscribe(response => {      
       this.formFields.find(f => f.label === 'Nome')!.value = response.nome;
@@ -92,8 +105,22 @@ export class MeusDadosComponent implements OnInit {
   }
   
   salvarAlteracoes() {
-    const dadosAtualizados = this.coletarDadosAtualizados();  
-    this.dadosService.updateDadosUsuario(dadosAtualizados, 7).subscribe();
+    const dados = this.coletarDadosAtualizados();
+  
+    const formData = new FormData();
+    formData.append('nome', dados.nome);
+    formData.append('email', dados.email);
+    formData.append('numero', dados.numero);
+    formData.append('genero', dados.genero);
+    formData.append('preferencia', dados.preferencia);
+  
+    if (this.fotoArquivo) {
+      formData.append('foto', this.fotoArquivo);
+    }
+  
+    this.dadosService.updateDadosUsuario(formData, 7).subscribe(() => {
+      console.log('Dados atualizados com sucesso');
+    });
   }  
 
   carregarFoto(id: number) {

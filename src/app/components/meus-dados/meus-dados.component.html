@@ -1,10 +1,10 @@
 <div class="profile-container">
   <div class="avatar-wrapper">
     <img *ngIf="fotoUrl" [src]="fotoUrl" alt="Avatar" class="avatar" />
-    <label class="meus-dados-camera">
-      <input type="file" hidden />
-      <img src="assets/img/camera.png" alt="Alterar Foto" />
-    </label>
+    <label class="meus-dados-camera">      
+      <input type="file" hidden (change)="onFileSelected($event)" />
+      <img [src]="'assets/img/camera.png'" alt="Alterar Foto" />
+    </label>    
   </div>
 
   <div class="form-group" *ngFor="let field of formFields">
