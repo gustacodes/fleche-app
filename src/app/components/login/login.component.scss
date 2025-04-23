@@ -1,10 +1,10 @@
 /* Login Page SCSS */
 .login-background {
-  --background: #3c1874; /* Fundo roxo escuro */
+  background-color: #3c1874 !important; 
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Garantir que o conteúdo ocupe toda a altura da tela */
+  min-height: 100vh; 
 }
 
 /* Estilo para o container de login */
@@ -12,23 +12,23 @@
   text-align: center;
   padding: 40px 20px;
   width: 100%;
-  max-width: 400px;  /* Definindo a largura máxima */
+  max-width: 400px;  
   margin: 0 auto;
   display: flex;
-  flex-direction: column; /* Forçar os itens a ficarem em coluna */
-  align-items: center;    /* Centralizar os itens horizontalmente */
+  flex-direction: column; 
+  align-items: center;    
 }
 
 /* Estilo para os Inputs */
 .custom-input {
-  --background: transparent;  /* Fundo transparente */
-  --color: #fff;              /* Texto branco */
-  --placeholder-color: #cccccc; /* Cor dos placeholders */
-  --highlight-color-focused: #ff6f91; /* Cor de foco */
-  --border-color: #ffffff50;  /* Cor da borda */
+  --background: transparent;  
+  --color: #fff;   
+  --placeholder-color: #cccccc; 
+  --highlight-color-focused: #ff6f91; 
+  --border-color: #ffffff50;  
   --border-radius: 12px;
   margin-bottom: 20px;
-  width: 100%;  /* Garantir que os inputs ocupem 100% da largura disponível */
+  width: 100%;  
 }
 
 /* Estilo do ion-input diretamente */
@@ -36,15 +36,15 @@
   font-family: Poppins;
   color: #fff;
   font-size: 16px;
-  padding: 15px 20px;  /* Aumentar o padding para mais espaço dentro do input */
-  background: transparent !important; /* Garantir fundo transparente */
-  border: 1px solid var(--input-border-color) !important; /* Usar variável para borda */
-  border-radius: 12px;  /* Borda arredondada para os inputs */
-  width: 100%;  /* Garantir que o input ocupe 100% da largura disponível */
+  padding: 15px 20px;  
+  background: transparent !important; 
+  border: 1px solid var(--input-border-color) !important; 
+  border-radius: 12px;  
+  width: 100%;  
 }
 
 .custom-input ion-input::placeholder {
-  color: var(--placeholder-color) !important;  /* Garantir que o placeholder tenha a cor correta */
+  color: var(--placeholder-color) !important;  
 }
 
 /* Estilo do botão */
@@ -55,27 +55,27 @@
   font-weight: 600;
   font-size: 18px;
   font-family: Poppins;
-  width: 100%;  /* Garantir que o botão ocupe 100% da largura disponível */
+  width: 100%; 
   margin-top: 10px;
   margin-bottom: 20px;
-  padding: 12px;  /* Ajuste no padding para maior altura do botão */
-  background-color: #f04069 !important; /* Garantir que o fundo seja rosa */
-  border: 1px solid #f04069;  /* Cor da borda igual ao fundo rosa */
+  padding: 12px;  
+  background-color: #f04069 !important; 
+  border: 1px solid #f04069;  
 }
 
 .login-button:hover {
-  background-color: #e02d58; /* Cor de fundo mais escura quando o botão for hover */
+  background-color: #e02d58; 
 }
 
 .login-button:active {
-  background-color: #e02d58; /* Cor de fundo mais escura quando pressionado */
-  border-color: #e02d58; /* Cor da borda também mais escura */
+  background-color: #e02d58; 
+  border-color: #e02d58; 
 }
 
 .login-button:focus {
-  --background: #ff6f91; /* Cor de fundo quando o botão recebe foco */
-  --border-color: #ff6f91; /* Cor da borda no foco */
-  outline: none; /* Remover o outline nativo */
+  --background: #ff6f91; 
+  --border-color: #ff6f91; 
+  outline: none; 
 }
 
 .login-logo {

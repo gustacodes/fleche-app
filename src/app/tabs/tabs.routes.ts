@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { AuthGuard } from '../guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -15,13 +16,12 @@ export const routes: Routes = [
         path: 'cadastro',
         loadComponent: () => 
           import('../components/cadastro/cadastro.component').then((m) => m.CadastroComponent),
-        
       },
       {
         path: 'tela-principal/:id',
         loadComponent: () => 
           import('../components/tela-principal/tela-principal.component').then((m) => m.TelaPrincipalComponent),
-        
+
       },
       {
         path: 'meus-dados',
@@ -33,10 +33,11 @@ export const routes: Routes = [
         path: 'bares',
         loadComponent: () => 
           import('../components/bares/bares.component').then((m) => m.BaresComponent),
-        
+        canActivate: [AuthGuard],
+        data: { role: 'USER' } 
       },
       {
-        path: '',
+        path: '**',
         redirectTo: '/fleche/login',
         pathMatch: 'full',
       },

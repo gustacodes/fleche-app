@@ -9,12 +9,12 @@ import { Observable } from 'rxjs';
 })
 export class UsuarioService {
 
-  private apiUrl = `http://${window.location.hostname}:8080`;
+  private apiUrl = `http://192.168.0.103:8080`;
 
   constructor(private http: HttpClient) { }
 
   cadastro(formData : FormData) : Observable<any> {
-    return this.http.post(`${this.apiUrl}/auth/singup`, formData);
+    return this.http.post(`${this.apiUrl}/usuario/singup`, formData);
   }
 
   getFoto(id: number): Observable<Blob> {

@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { DadosUsuario } from 'src/app/interfaces/usuario-dados';
 import { MeusDadosService } from 'src/app/services/meus-dados.service';
@@ -85,7 +84,7 @@ export class MeusDadosComponent implements OnInit {
     }
   } 
 
-  getDadosUsuario(id: number) {
+  getDadosUsuario(id: number) {    
     this.dadosService.getDadosUsuario(id).subscribe(response => {      
       this.formFields.find(f => f.label === 'Nome')!.value = response.nome;
       this.formFields.find(f => f.label === 'Email')!.value = response.email;

@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/authservice.service';
 
 @Component({
   selector: 'app-login',
@@ -12,13 +13,25 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
-  logar(tel: string, senha: string) {
-    this.loginService.login(tel, senha).subscribe(() => { 
+  login(telefone: string, senha: string) {
+    const credentials = {
+      telefone: telefone,
+      senha: senha
+    };    
+
+  this.authService.login(credentials).subscribe({
+    next: (res) => {      
+      this.authService.saveToken(res.token);      
       this.router.navigate(['fleche/bares']);
-    });
-  }
+    },
+    error: (err) => {
+      console.error('Erro no login', err);
+    }
+  });
+}
+
 
   irParaCadastro() {
     this.router.navigate(['fleche/cadastro']);

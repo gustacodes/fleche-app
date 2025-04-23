@@ -1,13 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { DadosUsuario } from '../interfaces/usuario-dados';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MeusDadosService {
-  private apiUrl = `http://${window.location.hostname}:8080`;
+  private apiUrl = `http://192.168.0.103:8080`;
 
   constructor(private http: HttpClient) { }
 
