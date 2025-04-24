@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
@@ -16,14 +17,14 @@ export class CadastroComponent {
   fotoSelecionada: File | null = null;
   cadastroForm: FormGroup;
 
-  constructor(private usuarioService: UsuarioService, private fb: FormBuilder) {
+  constructor(private usuarioService: UsuarioService, private fb: FormBuilder, private router: Router) {
     this.cadastroForm = this.fb.group({
       nome: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      numero: ['', [Validators.required, Validators.pattern(/^\d{10,11}$/)]],
+      ddd: ['', [Validators.required, Validators.pattern(/^\d{2}$/)]],
+      telefone: ['', [Validators.required, Validators.pattern(/^\d{8,9}$/)]],
       senha: ['', [Validators.required, Validators.minLength(6)]],
-      dataNascimento: ['', Validators.required],
-      foto: [null]
+      dataNascimento: ['', Validators.required]
     });
   }
 
@@ -36,23 +37,10 @@ export class CadastroComponent {
   }  
 
   cadastrar() {
-    if (this.cadastroForm.valid) {
-      const dados = this.cadastroForm.value;
-      const formData = new FormData();
-  
-      formData.append('nome', dados.nome);
-      formData.append('email', dados.email);
-      formData.append('numero', dados.numero);
-      formData.append('senha', dados.senha);
-      formData.append('dataNascimento', dados.dataNascimento);
-  
-      if (dados.foto) {
-        formData.append('foto', dados.foto);
-      }
-  
-      this.usuarioService.cadastro(formData).subscribe(
+    if (this.cadastroForm.valid) {  
+      this.usuarioService.cadastro(this.cadastroForm.value).subscribe(
         resposta => {
-          console.log('Usuário cadastrado com sucesso:', resposta);
+          this.router.navigate(['fleche/login']);
         },
         erro => {
           console.error('Erro ao cadastrar:', erro);

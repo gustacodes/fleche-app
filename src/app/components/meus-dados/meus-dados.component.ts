@@ -64,8 +64,8 @@ export class MeusDadosComponent implements OnInit {
   constructor(private dadosService: MeusDadosService) {}
 
   ngOnInit() {
-    this.carregarFoto(7);
-    this.getDadosUsuario(7);
+    this.carregarFoto(1);
+    this.getDadosUsuario(1);
   }
 
   toggleEdit(field: any) {
@@ -119,8 +119,8 @@ export class MeusDadosComponent implements OnInit {
     }
   
     this.dadosService.updateDadosUsuario(formData, 7).subscribe(() => {
-      this.getDadosUsuario(7); 
-      this.carregarFoto(7);
+      this.getDadosUsuario(1); 
+      this.carregarFoto(1);
     });
   }  
 

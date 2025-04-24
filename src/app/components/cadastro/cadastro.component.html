@@ -29,19 +29,25 @@
         Email inválido.
       </label>
 
-      <div class="custom-input">
+      <div class="custom-input phone-group">
         <input
-        class="inp"
-          formControlName="numero"
+          class="inp ddd-input"
+          formControlName="ddd"
+          placeholder="DDD"
+          type="text"
+          maxlength="2" />
+      
+        <input
+          class="inp phone-input"
+          formControlName="telefone"
           placeholder="Telefone"
-          type="tel"
-          fill="outline"
-          mode="md" />
+          type="tel" />
       </div>
-      <label class="danger" *ngIf="cadastroForm.get('numero')?.touched && cadastroForm.get('numero')?.invalid">
+      
+      <label class="danger" *ngIf="cadastroForm.get('telefone')?.touched && cadastroForm.get('telefone')?.invalid">
         Telefone inválido.
       </label>
-
+    
       <div class="custom-input">
         <input
           class="inp"
@@ -66,10 +72,10 @@
         Data de nascimento é obrigatória.
       </label>
 
-      <div class="custom-input file-input" lines="inset">
+      <!-- <div class="custom-input file-input" lines="inset">
         <label position="stacked">Escolha sua melhor foto</label>
         <input type="file" (change)="onFileSelected($event)" class="upload-input">
-      </div>
+      </div> -->
 
       <button class="cadastro-button" type="submit">
         Cadastrar

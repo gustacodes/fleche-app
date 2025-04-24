@@ -14,7 +14,7 @@ export class UsuarioService {
   constructor(private http: HttpClient) { }
 
   cadastro(formData : FormData) : Observable<any> {
-    return this.http.post(`${this.apiUrl}/usuario/singup`, formData);
+    return this.http.post(`${this.apiUrl}/auth/cadastrar`, formData);
   }
 
   getFoto(id: number): Observable<Blob> {

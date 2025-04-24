@@ -27,12 +27,20 @@ export const routes: Routes = [
         path: 'meus-dados',
         loadComponent: () => 
           import('../components/meus-dados/meus-dados.component').then((m) => m.MeusDadosComponent),
-        
+        canActivate: [AuthGuard],
+        data: { role: 'USER' } 
       },
       {
         path: 'bares',
         loadComponent: () => 
           import('../components/bares/bares.component').then((m) => m.BaresComponent),
+        canActivate: [AuthGuard],
+        data: { role: 'USER' } 
+      },
+      {
+        path: 'auth-bar',
+        loadComponent: () => 
+          import('../components/auth-bar/auth-bar.component').then((m) => m.AuthBarComponent),
         canActivate: [AuthGuard],
         data: { role: 'USER' } 
       },

@@ -130,3 +130,16 @@ button.cadastro-button {
   color: rgb(254, 81, 81);
 
 }
+
+.phone-group {
+  display: flex;
+  gap: 12px;
+
+  .ddd-input {
+    width: 30%;
+  }
+
+  .phone-input {
+    width: 70%;
+  }
+}

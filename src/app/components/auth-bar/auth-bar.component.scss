@@ -1,0 +1,71 @@
+.qr-auth-container {
+    background-color: #3c1874;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    padding: 32px 20px;
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .logo {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px auto;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  .subtitle {
+    font-size: 14px;
+    opacity: 0.85;
+    margin-bottom: 40px;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .qr-area {
+    background: #2c014d;
+    border: 2px dashed #ff4b2b;
+    border-radius: 20px;
+    padding: 40px 20px;
+    margin: 0 20px;
+  }
+  
+  .qr-illustration {
+    width: 120px;
+    margin-bottom: 20px;
+  }
+  
+  .scan-btn {
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .scan-btn:hover {
+    transform: scale(1.05);
+  }
+  
+  .footer-text {
+    margin-top: 30px;
+    font-size: 12px;
+    opacity: 0.7;
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
