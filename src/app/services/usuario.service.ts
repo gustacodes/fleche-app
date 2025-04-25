@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class UsuarioService {
 
-  private apiUrl = `http://192.168.0.103:8080`;
+  private apiUrl = environment.url;
 
   constructor(private http: HttpClient) { }
 

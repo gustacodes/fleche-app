@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { UsuarioOnline } from 'src/app/interfaces/usuario';
+import { AuthService } from 'src/app/services/authservice.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -12,31 +13,31 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   imports: [IonicModule, CommonModule],
   styleUrls: ['./tela-principal.component.scss'],
 })
-export class TelaPrincipalComponent {
+export class TelaPrincipalComponent implements OnInit {
   fotoUrl: string | null = null;
   usuarioOnline?: UsuarioOnline | undefined
   ide: number = 0;
-  idParam = this.route.snapshot.paramMap.get('id');
+  idUsuario!: number;
 
-  constructor(private usuarioService: UsuarioService, private route: ActivatedRoute) {
-    const idParam = this.route.snapshot.paramMap.get('id');
-
-    if (idParam) {
-      const id = Number(idParam);
-      this.usuarioService.getUsuariosOnline(id).subscribe(response => {
-        this.carregarFoto(response.content[this.ide.valueOf()].id);
-        this.usuarioOnline = response.content[this.ide.valueOf()]
+  constructor(private usuarioService: UsuarioService, private route: ActivatedRoute, private authService: AuthService) { }
+  
+  ngOnInit(): void {
+    this.authService.usuario.subscribe(res => {
+      if (!res) return;  
+      this.idUsuario = res.id;
+      this.usuarioService.getUsuariosOnline(res.id).subscribe(response => {
+        const usuarioSelecionado = response.content[this.ide.valueOf()];
+        if (usuarioSelecionado) {
+          this.carregarFoto(usuarioSelecionado.id);
+          this.usuarioOnline = usuarioSelecionado;
+        }
       });
-    } else {
-      console.error('ID não encontrado na rota!');
-    }
-    
-  }
+    });
+  }  
 
   like() {
-    if (this.idParam) {
-      const id = Number(this.idParam);
-      this.usuarioService.getUsuariosOnline(id).subscribe(response => {
+    if (this.idUsuario) {
+      this.usuarioService.getUsuariosOnline(this.idUsuario).subscribe(response => {
         this.carregarFoto(response.content[this.ide.valueOf()].id);
         this.usuarioOnline = response.content[this.ide.valueOf()]
       });
@@ -48,8 +49,8 @@ export class TelaPrincipalComponent {
   }
 
   dislike() {
-    if (this.idParam) {
-      const id = Number(this.idParam);
+    if (this.idUsuario) {
+      const id = Number(this.idUsuario);
       this.usuarioService.getUsuariosOnline(id).subscribe(response => {
         this.carregarFoto(response.content[this.ide.valueOf()].id);
         this.usuarioOnline = response.content[this.ide.valueOf()]

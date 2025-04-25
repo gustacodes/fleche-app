@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { UsuariosOnlineBares } from 'src/app/interfaces/bares';
+import { AuthService } from 'src/app/services/authservice.service';
 import { BaresService } from 'src/app/services/bares.service';
 
 @Component({
@@ -13,10 +14,13 @@ import { BaresService } from 'src/app/services/bares.service';
 export class BaresComponent  implements OnInit {
   bares: UsuariosOnlineBares[] = [];
 
-  constructor(private barServices: BaresService) { }
+  constructor(private barServices: BaresService, private authService: AuthService) { }
 
   ngOnInit() {
     this.getUsuariosOnlineBar();
+    this.authService.usuario.subscribe(user => {
+      console.log(user);      
+    });
   }
 
   toggleDetalhes(index: number) {
@@ -30,7 +34,6 @@ export class BaresComponent  implements OnInit {
         mostrarDetalhes: false
       }));
     });
-  }
-  
+  }  
 
 }

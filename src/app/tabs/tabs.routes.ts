@@ -21,7 +21,8 @@ export const routes: Routes = [
         path: 'tela-principal/:id',
         loadComponent: () => 
           import('../components/tela-principal/tela-principal.component').then((m) => m.TelaPrincipalComponent),
-
+        canActivate: [AuthGuard],
+        data: { role: 'USER' } 
       },
       {
         path: 'meus-dados',
