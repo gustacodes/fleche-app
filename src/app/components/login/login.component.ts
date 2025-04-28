@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
         this.authService.saveToken(res.token);  
         const decodedToken: any = jwtDecode(res.token);
         this.authService.setUserFromToken(decodedToken);
-        this.router.navigate(['fleche/tela-principal', decodedToken.id]);
+        this.router.navigate(['fleche/bares']);
       },
       error: (err) => {
         console.error('Erro no login', err);

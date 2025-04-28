@@ -13,8 +13,8 @@ export class BaresService {
 
   constructor(private http: HttpClient) { }
 
-  getUsuariosOnlineBar(): Observable<UsuariosOnlineBares[]> {
-    return this.http.get<UsuariosOnlineBares[]>(`${this.apiUrl}/sessao/usuarios/online`);
+  getUsuariosOnlineBar(usuarioId: number): Observable<UsuariosOnlineBares[]> {
+    return this.http.get<UsuariosOnlineBares[]>(`${this.apiUrl}/sessao/usuarios/${usuarioId}/online`);
   }
   
 }

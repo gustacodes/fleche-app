@@ -16,10 +16,10 @@ export class BaresComponent  implements OnInit {
 
   constructor(private barServices: BaresService, private authService: AuthService) { }
 
-  ngOnInit() {
-    this.getUsuariosOnlineBar();
+  ngOnInit() {    
     this.authService.usuario.subscribe(user => {
       console.log(user);      
+      this.getUsuariosOnlineBar(user.id);
     });
   }
 
@@ -27,8 +27,8 @@ export class BaresComponent  implements OnInit {
     this.bares[index].mostrarDetalhes = !this.bares[index].mostrarDetalhes;
   }
 
-  getUsuariosOnlineBar() {
-    this.barServices.getUsuariosOnlineBar().subscribe((response: UsuariosOnlineBares[]) => {
+  getUsuariosOnlineBar(usuarioId: number) {
+    this.barServices.getUsuariosOnlineBar(usuarioId).subscribe((response: UsuariosOnlineBares[]) => {
       this.bares = response.map(bar => ({
         ...bar,
         mostrarDetalhes: false
