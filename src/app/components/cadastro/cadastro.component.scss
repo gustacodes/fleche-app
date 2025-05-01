@@ -44,19 +44,32 @@
     font-family: Poppins;
     color: #fff;
     font-size: 16px;
-    padding: 15px 20px;  /* Aumentar o padding para mais espaço dentro do input */
-    background: transparent !important; /* Garantir fundo transparente */
-    border: 1px solid var(--input-border-color) !important; /* Usar variável para borda */
-    border-radius: 12px;  /* Borda arredondada para os inputs */
-    width: 100%;  /* Garantir que o input ocupe 100% da largura disponível */
+    padding: 15px 20px;
+    background: #2b1156 !important;
+    border: 2px solid #6c2bd9 !important; // Nova borda roxa padrão
+    border-radius: 8px;
+    width: 100%;
+    transition: all 0.3s ease;
+  }
+
+  .inp:focus {
+    border-color: #ff2c74 !important; // Borda rosa ao focar
+    outline: none;
   }
 
   input[type="date"] {
     background-color: transparent;
-    border: none;
+    border: 2px solid #6c2bd9 !important;
+    border-radius: 8px;
     color: #fff;
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
+    transition: all 0.3s ease;
+  }
+
+  input[type="date"]:focus {
+    border-color: #ff2c74 !important;
+    outline: none;
   }
 
   input[type="date"]::-webkit-calendar-picker-indicator {

@@ -32,20 +32,27 @@
 }
 
 /* Estilo do ion-input diretamente */
- .inp {
+.inp {
   font-family: Poppins;
   color: #fff;
   font-size: 16px;
-  padding: 15px 20px;  
-  background: transparent !important; 
-  border: 1px solid var(--input-border-color) !important; 
-  border-radius: 12px;  
-  width: 100%;  
+  padding: 15px 20px;
+  background-color: #2b1156 !important;
+  border: 2px solid #6c2bd9 !important;
+  border-radius: 8px;
+  width: 100%;
+  transition: all 0.3s ease;
+
+  &:focus-within {
+    border-color: #ff2c74 !important;
+    outline: none;
+  }
 }
 
 .custom-input ion-input::placeholder {
-  color: var(--placeholder-color) !important;  
+  color: var(--placeholder-color) !important;
 }
+
 
 /* Estilo do botão */
 .login-button {
