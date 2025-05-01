@@ -1,0 +1,155 @@
+:host {
+    display: block;
+    height: 100vh;
+    background-color: #3c1874;
+  }
+  
+  .profile-container {
+    height: 100%;
+    width: 100%;
+    padding: 24px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    overflow-y: auto;
+    padding-top: 90px;
+  }
+  
+  .avatar-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+  
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #ff2c74;
+    }
+  
+    .meus-dados-camera {
+      position: absolute;
+      bottom: 0;
+      right: 135px;
+      width: 30px;
+      height: 30px;
+      background: #ff2c74;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  
+      img {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+  
+  .form-group {
+    margin-bottom: 16px;
+    width: 100%;
+  
+    label {
+      display: block;
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+  
+    input,
+    select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      background-color: #2b1156;
+      color: white;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+  
+    input:disabled,
+    select:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  
+    input::placeholder {
+      color: #aaa;
+    }
+  }
+  
+  .input-edit-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  
+    &.editing input,
+    &.editing select {
+      background-color: #39126b;
+      border: 1px solid #ff2c74;
+    }
+  
+    .edit-button {
+      background: transparent;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 4px;
+      margin-left: 8px;
+  
+      img {
+        width: 20px;
+        height: 20px;
+      }
+  
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+  
+  .save-button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(to right, #ff2c74, #ff5e3a);
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+  
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #6c2bd9; /* Aqui define a cor da borda */
+    background-color: #2b1156;
+    color: white;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    resize: none;
+  }
+  
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-color: #ff2c74; /* Cor diferente ao focar */
+    outline: none;
+  }
+  

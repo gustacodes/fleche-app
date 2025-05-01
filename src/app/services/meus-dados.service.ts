@@ -11,15 +11,19 @@ export class MeusDadosService {
 
   constructor(private http: HttpClient) { }
 
-  getDadosUsuario(id: number): Observable<any> {
+  getDadosUsuario(id: number | undefined): Observable<any> {
     return this.http.get(`${this.apiUrl}/usuario/${id}/dados`);
   }
 
-  getFoto(id: number): Observable<Blob> {
-    return this.http.get(`${this.apiUrl}/usuario/${id}/foto`, { responseType: 'blob' });
+  getFoto(id: number | undefined): Observable<Blob> {
+    return this.http.get(`${this.apiUrl}/perfil/${id}/foto`, { responseType: 'blob' });
   }
 
-  updateDadosUsuario(usuario: FormData, id: number): Observable<any> {
+  adicionarPerfil(usuario: FormData): Observable<any> {
+    return this.http.post(`${this.apiUrl}/perfil/cadastrar`, usuario);
+  }
+
+  updateDadosUsuario(usuario: FormData, id: number | undefined): Observable<any> {
     return this.http.patch(`${this.apiUrl}/usuario/${id}/atualizar`, usuario);
   }
 }

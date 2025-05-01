@@ -6,12 +6,13 @@ import { CadastroPageModule } from './components/cadastro/cadastro.module';
 import { MeusDadosModule } from './components/meus-dados/meus-dados.module';
 import { AuthenticationInterceptorProvider, AuthInterceptor } from './components/interceptor/auth.interceptor';
 import { CommonModule } from '@angular/common';
+import { MeuPerfilModule } from './components/meu-perfil/meu-perfil.module';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
-  imports: [BrowserModule, LoginPageModule, CadastroPageModule, MeusDadosModule],
+  imports: [BrowserModule, LoginPageModule, CadastroPageModule, MeusDadosModule, MeuPerfilModule],
   providers: [CommonModule, AuthenticationInterceptorProvider],
   bootstrap: [AppComponent]
 })

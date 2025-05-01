@@ -27,6 +27,8 @@ export class TelaPrincipalComponent implements OnInit {
       this.idUsuario = res.id;
       this.usuarioService.getUsuariosOnline(res.id).subscribe(response => {
         const usuarioSelecionado = response.content[this.ide.valueOf()];
+        console.log(usuarioSelecionado);
+        
         if (usuarioSelecionado) {
           this.carregarFoto(usuarioSelecionado.id);
           this.usuarioOnline = usuarioSelecionado;

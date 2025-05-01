@@ -1,0 +1,38 @@
+<div class="profile-container">
+  <div class="avatar-wrapper">
+    <img [src]="fotoUrl && fotoUrl !== '' ? fotoUrl : 'assets/img/profile-icon.jpg'" alt="Avatar" class="avatar" />
+    <label class="meus-dados-camera">      
+      <input type="file" hidden (change)="onFileSelected($event)" />
+      <img src="assets/img/camera.png" alt="Alterar Foto" />
+    </label>    
+  </div>
+
+  <div class="form-group" *ngFor="let field of formFields">
+    <label>{{ field.label }}</label>
+    <div class="input-edit-wrapper">
+      <ng-container [ngSwitch]="field.type">
+
+        <!-- Campo de texto livre (BIO) -->
+        <textarea
+          *ngSwitchCase="'text-area'"
+          [placeholder]="field.placeholder"
+          [(ngModel)]="field.value"
+          rows="3"
+        ></textarea>
+
+        <!-- Campo de seleção (select) -->
+        <select
+          *ngSwitchCase="'select'"
+          [(ngModel)]="field.value"
+        >
+          <option *ngFor="let option of field.options" [value]="option">
+            {{ option }}
+          </option>
+        </select>
+
+      </ng-container>
+    </div>
+  </div>
+
+  <button class="save-button" (click)="salvarAlteracoes()">Salvar</button>
+</div>

@@ -21,29 +21,36 @@ export const routes: Routes = [
         path: 'tela-principal/:id',
         loadComponent: () => 
           import('../components/tela-principal/tela-principal.component').then((m) => m.TelaPrincipalComponent),
-        canActivate: [AuthGuard],
-        data: { role: 'USER' } 
+          canActivate: [AuthGuard],
+          data: { role: 'USER' } 
       },
       {
         path: 'meus-dados',
         loadComponent: () => 
           import('../components/meus-dados/meus-dados.component').then((m) => m.MeusDadosComponent),
-        canActivate: [AuthGuard],
-        data: { role: 'USER' } 
+          canActivate: [AuthGuard],
+          data: { role: 'USER' } 
       },
       {
         path: 'bares',
         loadComponent: () => 
           import('../components/bares/bares.component').then((m) => m.BaresComponent),
-        canActivate: [AuthGuard],
-        data: { role: 'USER' } 
+          canActivate: [AuthGuard],
+          data: { role: 'USER' } 
       },
       {
         path: 'auth-bar',
         loadComponent: () => 
           import('../components/auth-bar/auth-bar.component').then((m) => m.AuthBarComponent),
-        canActivate: [AuthGuard],
-        data: { role: 'USER' } 
+          canActivate: [AuthGuard],
+          data: { role: 'USER' } 
+      },
+      {
+        path: 'meu-perfil/:id',
+        loadComponent: () => 
+          import('../components/meu-perfil/meu-perfil.component').then((m) => m.MeuPerfilComponent),
+          canActivate: [AuthGuard],
+          data: { role: 'USER' } 
       },
       {
         path: '**',

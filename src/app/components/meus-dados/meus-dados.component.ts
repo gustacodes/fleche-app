@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { DadosUsuario } from 'src/app/interfaces/usuario-dados';
+import { AuthService } from 'src/app/services/authservice.service';
 import { MeusDadosService } from 'src/app/services/meus-dados.service';
 
 @Component({
@@ -46,26 +47,21 @@ export class MeusDadosComponent implements OnInit {
       value: '',
     },
     {
-      label: 'Gênero',
-      type: 'select',
-      options: ['MASCULINO', 'FEMININO', 'OUTRO'],
-      editable: false,
-      value: '',
-    },
-    {
-      label: 'Preferência',
-      type: 'select',
-      options: ['HOMENS', 'MULHERES', 'AMBOS'],
+      label: 'Senha',
+      placeholder: '**************',
+      type: 'password',
       editable: false,
       value: '',
     }
   ];
   
-  constructor(private dadosService: MeusDadosService) {}
+  constructor(private dadosService: MeusDadosService, private authService: AuthService) {}
 
   ngOnInit() {
-    this.carregarFoto(1);
-    this.getDadosUsuario(1);
+    this.authService.usuario.subscribe(res => {
+      this.carregarFoto(res.id);
+      this.getDadosUsuario(res.id);      
+    })    
   }
 
   toggleEdit(field: any) {
@@ -85,12 +81,10 @@ export class MeusDadosComponent implements OnInit {
   } 
 
   getDadosUsuario(id: number) {    
-    this.dadosService.getDadosUsuario(id).subscribe(response => {      
+    this.dadosService.getDadosUsuario(id).subscribe(response => {  
       this.formFields.find(f => f.label === 'Nome')!.value = response.nome;
       this.formFields.find(f => f.label === 'Email')!.value = response.email;
-      this.formFields.find(f => f.label === 'Telefone')!.value = response.numero;
-      this.formFields.find(f => f.label === 'Gênero')!.value = response.genero;
-      this.formFields.find(f => f.label === 'Preferência')!.value = response.preferencia;
+      this.formFields.find(f => f.label === 'Telefone')!.value = response.telefone;
     });
   }
 

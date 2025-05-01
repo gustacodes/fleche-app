@@ -1,12 +1,5 @@
 <div class="profile-container">
-  <div class="avatar-wrapper">
-    <img *ngIf="fotoUrl" [src]="fotoUrl" alt="Avatar" class="avatar" />
-    <label class="meus-dados-camera">      
-      <input type="file" hidden (change)="onFileSelected($event)" />
-      <img [src]="'assets/img/camera.png'" alt="Alterar Foto" />
-    </label>    
-  </div>
-
+    <img src="assets/img/logo.png" alt="Fleche logo" class="login-logo" />     
   <div class="form-group" *ngFor="let field of formFields">
     <label>{{ field.label }}</label>
     <div class="input-edit-wrapper" [class.editing]="field.editable">
@@ -32,15 +25,22 @@
           [(ngModel)]="field.value"
           [disabled]="!field.editable"
         />
-        <select
+        <input
+          *ngSwitchCase="'password'"
+          type="password"
+          [placeholder]="field.placeholder"
+          [(ngModel)]="field.value"
+          [disabled]="!field.editable"
+        />
+        <!-- <select
         *ngSwitchCase="'select'"
         [disabled]="!field.editable"
         [(ngModel)]="field.value"
         >
-        <option *ngFor="let option of field.options" [value]="option">
+         <option *ngFor="let option of field.options" [value]="option">
           {{ option }}
-        </option>
-      </select>
+        </option> 
+      </select> -->
 
       </ng-container>
 
