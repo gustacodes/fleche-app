@@ -6,7 +6,7 @@
       <input
         class="inp"
         #telInput
-        placeholder="Email ou telefone"
+        placeholder="Telefone"
         type="email"
         mode="md" />
     </div>
@@ -19,12 +19,23 @@
         mode="md" />
     </div>
     
-    <ion-button expand="block" class="login-button" (click)="login(telInput.value!.toString(), senhaInput.value!.toString())">
+    <ion-button expand="block" id="headerAnchor" class="login-button" (click)="login(telInput.value!.toString(), senhaInput.value!.toString())">
       Entrar
     </ion-button> 
+    <!-- <ion-toast
+    trigger="headerAnchor"
+    position="top"
+    positionAnchor="header"
+    message="Bem-vindo de volta!"
+    duration="2000"
+    cssClass="custom-toast"
+  ></ion-toast> -->
 
     <p class="login-text">
       Não tem conta? <a (click)="irParaCadastro()" class="link-cadastrese">Crie aqui.</a>
+    </p>
+    <p class="login-text">
+      Versão 1.8
     </p>
   </div>
 </div>

@@ -3,12 +3,18 @@ import { Component, OnInit } from '@angular/core';
 import { UsuariosOnlineBares } from 'src/app/interfaces/bares';
 import { AuthService } from 'src/app/services/authservice.service';
 import { BaresService } from 'src/app/services/bares.service';
+import { IonicModule } from '@ionic/angular';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-bares',
   templateUrl: './bares.component.html',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    IonicModule],
   styleUrls: ['./bares.component.scss'],
 })
 export class BaresComponent  implements OnInit {

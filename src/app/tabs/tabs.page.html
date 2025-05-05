@@ -1,8 +1,15 @@
 <ion-tabs>
   <ion-tab-bar slot="bottom">
-      <!-- <ion-icon name="home-outline"></ion-icon> -->
-      <img src="assets/img/chat-2.png" alt="Fleche logo" class="icon-chat" />
-      <img src="assets/img/fleche-icon.png" alt="Fleche logo" class="icon-fleche" (click)="flechar()"/>
-      <img src="assets/img/profile-icon.jpg" alt="Fleche logo" class="icon-profile" (click)="meusDados()"/>
+    <ion-tab-button routerLink="/fleche/login" layout="icon-top">
+      <ion-icon name="flash"></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button routerLink="/fleche/tela-principal" layout="icon-top">
+      <ion-icon name="chatbubbles-outline"></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button routerLink="/fleche/meus-dados" layout="icon-top">
+      <ion-icon name="reorder-four-outline"></ion-icon>
+    </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>

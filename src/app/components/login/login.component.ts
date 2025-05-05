@@ -1,22 +1,35 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
-import { LoginService } from '../../services/login.service';
+import { IonicModule, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/authservice.service';
 import { jwtDecode } from 'jwt-decode';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [IonicModule],
+  imports: [IonicModule,
+    CommonModule,
+    FormsModule],
   templateUrl: 'login.component.html',
   styleUrls: ['login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private toastController: ToastController) { }
 
   ngOnInit(): void { }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Bem-vindo de volta!',
+      duration: 2000,
+      position: 'top',
+      cssClass: 'custom-toast'
+    });
+    await toast.present();
+  }
 
   login(telefone: string, senha: string) {
     const credentials = {
@@ -29,7 +42,8 @@ export class LoginComponent implements OnInit {
         this.authService.saveToken(res.token);  
         const decodedToken: any = jwtDecode(res.token);
         this.authService.setUserFromToken(decodedToken);
-        this.router.navigate(['fleche/bares']);
+        this.router.navigate(['fleche/tela-principal', decodedToken.id]);
+        this.presentToast();
       },
       error: (err) => {
         console.error('Erro no login', err);

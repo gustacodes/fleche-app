@@ -1,22 +1,20 @@
-import { Component, EnvironmentInjector, inject, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/angular/standalone';
-import { addIcons } from 'ionicons';
-import { triangle, ellipse, square } from 'ionicons/icons';
+import { Component, EnvironmentInjector, OnInit, ViewEncapsulation, inject } from '@angular/core';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-tabs',
   templateUrl: 'tabs.page.html',
   styleUrls: ['tabs.page.scss'],
-  imports: [IonTabs, IonTabBar],
+  standalone: true,
+  encapsulation: ViewEncapsulation.None, 
+  imports: [IonicModule, RouterModule]
 })
 export class TabsPage implements OnInit {
   public environmentInjector = inject(EnvironmentInjector);
   idUsuario: string | null = null;
 
-  constructor(private router: Router, private route: ActivatedRoute) {
-    addIcons({ triangle, ellipse, square });
-  }
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.idUsuario = this.route.snapshot.paramMap.get('id');

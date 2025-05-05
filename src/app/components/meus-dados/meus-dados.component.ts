@@ -11,7 +11,9 @@ import { MeusDadosService } from 'src/app/services/meus-dados.service';
   templateUrl: './meus-dados.component.html',
   styleUrls: ['./meus-dados.component.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule],
+  imports: [CommonModule,
+    IonicModule,
+    FormsModule],
 })
 export class MeusDadosComponent implements OnInit {
   fotoUrl: string | null = null;

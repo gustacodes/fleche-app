@@ -1,5 +1,4 @@
 /* global.scss */
-
 /* Use as variáveis definidas */
 @use "theme/variables" as *;
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
@@ -19,6 +18,23 @@
 /* Dark mode config */
 @import '@ionic/angular/css/palettes/dark.system.css';
 
+:root {
+    --ion-color-primary: #3880ff;
+    --ion-color-secondary: #3dc2ff;
+    --ion-color-tertiary: #5260ff;
+    --ion-color-success: #2dd36f;
+    --ion-color-warning: #ffc409;
+    --ion-color-danger: #eb445a;
+    --ion-color-dark: #222428;
+    --ion-color-medium: #92949c;
+    --ion-color-light: #f4f5f8;
+  
+    --ion-font-family: 'Poppins', sans-serif;
+    --ion-text-color: #000;
+    --ion-background-color: #fff;
+  }
+  
+
 
 body, ion-content, ion-label, ion-input, ion-button {
     font-family: var(--ion-font-family), sans-serif !important;
@@ -31,3 +47,37 @@ ion-content {
     background-color: var(--ion-background-color) !important;
 }
 
+/* Estilização da Tab Bar */
+ion-tab-bar {
+  --background: #2b1156;
+  border-radius: 16px;
+  height: 55px;
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.3);
+  padding-bottom: env(safe-area-inset-bottom);
+  width: 92%;
+  margin: 0 auto;
+  position: relative;
+  bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+ion-tab-button {
+  --color: #d4d4d4;
+  --color-selected: #5a41a0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+ion-tab-button.tab-selected::after {
+  content: '';
+  display: block;
+  background-color: #5a41a0;
+  width: 20px;
+  height: 2px;
+  margin-top: 4px;
+  border-radius: 1px;
+}

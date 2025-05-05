@@ -12,7 +12,9 @@ import { MeuPerfil } from 'src/app/interfaces/meu-perfil';
   templateUrl: './meu-perfil.component.html',
   styleUrls: ['./meu-perfil.component.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule],
+  imports: [CommonModule,
+    IonicModule,
+    FormsModule],
 })
 export class MeuPerfilComponent  implements OnInit {
   fotoUrl: string | null = null;
