@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/authservice.service';
 import { jwtDecode } from 'jwt-decode';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router, private toastController: ToastController) { }
+  constructor(private authService: AuthService, private router: Router, private toastController: ToastController, private usuarioService: UsuarioService) { }
 
   ngOnInit(): void { }
 
@@ -42,8 +43,12 @@ export class LoginComponent implements OnInit {
         this.authService.saveToken(res.token);  
         const decodedToken: any = jwtDecode(res.token);
         this.authService.setUserFromToken(decodedToken);
-        this.router.navigate(['fleche/tela-principal', decodedToken.id]);
-        this.presentToast();
+        if(this.usuarioService.getFoto(decodedToken.id) != null) {          
+          this.router.navigate(['fleche/tela-principal', decodedToken.id]);
+        } else {          
+          this.presentToast();
+          this.router.navigate(['fleche/meu-perfil', decodedToken.id]);
+        }
       },
       error: (err) => {
         console.error('Erro no login', err);

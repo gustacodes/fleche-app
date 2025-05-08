@@ -46,14 +46,20 @@ export class TelaPrincipalComponent implements OnInit {
        this.router.navigate(['fleche/sem-fleche'])
     }
   }
-  
 
-  darLikeOuDislike() {
+  like() {
+    this.animacaoClasse = 'slide-right';
     this.indiceAtual++;
     this.exibirUsuarioAtual();
   }
-  
 
+  dislike() {
+    this.animacaoClasse = 'slide-left';
+    this.indiceAtual++;
+    this.exibirUsuarioAtual();
+  }  
+
+  
   carregarFoto(id: number) {
     this.usuarioService.getFoto(id).subscribe(blob => {
       const reader = new FileReader();
@@ -67,10 +73,7 @@ export class TelaPrincipalComponent implements OnInit {
   resetAnimacao() {
     this.animacaoClasse = '';
     if (this.idUsuario) {
-      this.usuarioService.getUsuariosOnline(this.idUsuario).subscribe(response => {
-        this.carregarFoto(response.content[this.ide.valueOf()].id);
-        this.usuarioOnline = response.content[this.ide.valueOf()]
-      });
+      this.exibirUsuarioAtual();
     }
   }
 
