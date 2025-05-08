@@ -138,3 +138,34 @@ ion-card-title {
   .img-dislike:hover {
     transform: scale(1.1);
   }
+
+  @keyframes slide-right {
+    0% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(100vw);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes slide-left {
+    0% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(-100vw);
+      opacity: 0;
+    }
+  }
+  
+  .slide-right {
+    animation: slide-right 0.6s ease-out forwards;
+  }
+  
+  .slide-left {
+    animation: slide-left 0.6s ease-out forwards;
+  }
+  

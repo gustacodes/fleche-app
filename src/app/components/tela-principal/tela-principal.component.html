@@ -1,6 +1,6 @@
 <div class="like-dislike-container">
-  <div class="card-container">
-      <div class="foto-wrapper">
+  <div class="card-container" #card>
+      <div class="foto-wrapper" [ngClass]="animacaoClasse" (animationend)="resetAnimacao()">
         <img *ngIf="fotoUrl" [src]="fotoUrl" alt="Profile Image" class="foto-principal" />
         
         <div class="texto-sobre-imagem">          
@@ -9,8 +9,8 @@
         </div>
 
         <div class="buttons">
-          <img src="assets/img/dislike.png" alt="Dislike" class="img-dislike" (click)="dislike()"/>
-          <img src="assets/img/like.png" alt="Like" class="img-like" (click)="like()"/>
+          <img src="assets/img/dislike.png" alt="Dislike" class="img-dislike" (click)="darLikeOuDislike()"/>
+          <img src="assets/img/like.png" alt="Like" class="img-like" (click)="darLikeOuDislike()"/>
         </div>  
       </div>
 

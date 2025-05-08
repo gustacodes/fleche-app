@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { UsuarioOnline } from 'src/app/interfaces/usuario';
 import { AuthService } from 'src/app/services/authservice.service';
@@ -18,52 +18,41 @@ export class TelaPrincipalComponent implements OnInit {
   usuarioOnline?: UsuarioOnline | undefined
   ide: number = 0;
   idUsuario!: number;
+  animacaoClasse: string = '';
+  usuariosOnline: any[] = [];
+  indiceAtual: number = 0;
 
-  constructor(private usuarioService: UsuarioService, private route: ActivatedRoute, private authService: AuthService) { }
+  constructor(private usuarioService: UsuarioService, private route: ActivatedRoute, private authService: AuthService, private router: Router) { }
   
   ngOnInit(): void {
     this.authService.usuario.subscribe(res => {
       if (!res) return;  
       this.idUsuario = res.id;
       this.usuarioService.getUsuariosOnline(res.id).subscribe(response => {
-        const usuarioSelecionado = response.content[this.ide.valueOf()];
-        console.log(usuarioSelecionado);
-        
-        if (usuarioSelecionado) {
-          this.carregarFoto(usuarioSelecionado.id);
-          this.usuarioOnline = usuarioSelecionado;
-        }
+        this.usuariosOnline = response.content;
+        this.indiceAtual = 0;
+        this.exibirUsuarioAtual();
       });
+      
     });
   }  
 
-  like() {
-    if (this.idUsuario) {
-      this.usuarioService.getUsuariosOnline(this.idUsuario).subscribe(response => {
-        this.carregarFoto(response.content[this.ide.valueOf()].id);
-        this.usuarioOnline = response.content[this.ide.valueOf()]
-      });
+  exibirUsuarioAtual() {
+    const usuarioSelecionado = this.usuariosOnline[this.indiceAtual];
+    if (usuarioSelecionado) {
+      this.carregarFoto(usuarioSelecionado.id);
+      this.usuarioOnline = usuarioSelecionado;
     } else {
-      console.error('ID não encontrado na rota!');
+       this.router.navigate(['fleche/sem-fleche'])
     }
-    this.ide += 1;    
-    console.log('Like! 💚');
   }
+  
 
-  dislike() {
-    if (this.idUsuario) {
-      const id = Number(this.idUsuario);
-      this.usuarioService.getUsuariosOnline(id).subscribe(response => {
-        this.carregarFoto(response.content[this.ide.valueOf()].id);
-        this.usuarioOnline = response.content[this.ide.valueOf()]
-      });
-    } else {
-      console.error('ID não encontrado na rota!');
-    }
-    this.ide -= 1;
-    console.log(this.ide);
-    console.log('Dislike! 💔');
+  darLikeOuDislike() {
+    this.indiceAtual++;
+    this.exibirUsuarioAtual();
   }
+  
 
   carregarFoto(id: number) {
     this.usuarioService.getFoto(id).subscribe(blob => {
@@ -73,6 +62,16 @@ export class TelaPrincipalComponent implements OnInit {
       };
       reader.readAsDataURL(blob);
     });
+  }
+
+  resetAnimacao() {
+    this.animacaoClasse = '';
+    if (this.idUsuario) {
+      this.usuarioService.getUsuariosOnline(this.idUsuario).subscribe(response => {
+        this.carregarFoto(response.content[this.ide.valueOf()].id);
+        this.usuarioOnline = response.content[this.ide.valueOf()]
+      });
+    }
   }
 
 }

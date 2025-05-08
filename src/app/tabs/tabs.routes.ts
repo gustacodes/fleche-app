@@ -53,6 +53,13 @@ export const routes: Routes = [
           data: { role: 'USER' } 
       },
       {
+        path: 'sem-fleche',
+        loadComponent: () => 
+          import('../components/sem-fleche/sem-fleche.component').then((m) => m.SemFlecheComponent),
+          canActivate: [AuthGuard],
+          data: { role: 'USER' } 
+      },
+      {
         path: '**',
         redirectTo: '/fleche/login',
         pathMatch: 'full',
