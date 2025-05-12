@@ -1,5 +1,7 @@
 {
   "name": "fleche",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular-standalone"
 }

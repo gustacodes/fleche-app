@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
 
   async presentToast() {
     const toast = await this.toastController.create({
-      message: 'Bem-vindo de volta!',
+      message: 'Login ou senha inválidas!',
       duration: 2000,
       position: 'top',
       cssClass: 'custom-toast'
@@ -33,24 +33,24 @@ export class LoginComponent implements OnInit {
   }
 
   login(telefone: string, senha: string) {
-    const credentials = {
+    const dados = {
       telefone: telefone,
       senha: senha
     };
   
-    this.authService.login(credentials).subscribe({
+    this.authService.login(dados).subscribe({
       next: (res) => {
         this.authService.saveToken(res.token);  
         const decodedToken: any = jwtDecode(res.token);
         this.authService.setUserFromToken(decodedToken);
         if(this.usuarioService.getFoto(decodedToken.id) != null) {          
-          this.router.navigate(['fleche/tela-principal', decodedToken.id]);
-        } else {          
-          this.presentToast();
+          this.router.navigate(['fleche/bares']);
+        } else {        
           this.router.navigate(['fleche/meu-perfil', decodedToken.id]);
         }
       },
       error: (err) => {
+        // this.presentToast();
         console.error('Erro no login', err);
       }
     });

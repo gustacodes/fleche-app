@@ -5,8 +5,15 @@ const config: CapacitorConfig = {
   appName: 'Fleche',
   webDir: 'www',
   server: {
-    cleartext: true,
-    androidScheme: 'http'
+    androidScheme: 'http',
+    cleartext: true
+  },
+  plugins: {
+    Camera: {
+      enabled: true,
+      presentationStyle: 'fullscreen'
+    }
   }
 };
+
 export default config;

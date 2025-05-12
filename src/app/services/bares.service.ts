@@ -16,5 +16,9 @@ export class BaresService {
   getUsuariosOnlineBar(usuarioId: number): Observable<UsuariosOnlineBares[]> {
     return this.http.get<UsuariosOnlineBares[]>(`${this.apiUrl}/sessao/usuarios/${usuarioId}/online`);
   }
+
+  postCheckIn(dados: { usuarioId: number; qrCode: string }){
+    return this.http.post<{ status: string }>(`${this.apiUrl}/sessao/checkin`, dados);
+  }
   
 }

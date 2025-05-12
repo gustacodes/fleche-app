@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/authservice.service';
 import { BaresService } from 'src/app/services/bares.service';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bares',
@@ -20,11 +21,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 export class BaresComponent  implements OnInit {
   bares: UsuariosOnlineBares[] = [];
 
-  constructor(private barServices: BaresService, private authService: AuthService) { }
+  constructor(private barServices: BaresService, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {    
-    this.authService.usuario.subscribe(user => {
-      console.log(user);      
+    this.authService.usuario.subscribe(user => {  
       this.getUsuariosOnlineBar(user.id);
     });
   }
@@ -40,6 +40,10 @@ export class BaresComponent  implements OnInit {
         mostrarDetalhes: false
       }));
     });
-  }  
+  } 
+
+  autenticar() {
+    this.router.navigate(['fleche/auth-bar'])
+  }
 
 }

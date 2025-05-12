@@ -57,6 +57,11 @@
   .view-button:hover {
     background-color: #ff2f7c;
   }
+
+  .button-group {
+    display: flex;
+    gap: 40px;
+  }
   
   .bar-details {
     background-color: #2a1d4f;
