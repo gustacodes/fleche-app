@@ -1,35 +1,42 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
-import { AlertController } from '@ionic/angular';
+import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 
 @Component({
   selector: 'app-auth-bar',
   templateUrl: './auth-bar.component.html',
   styleUrls: ['./auth-bar.component.scss'],
-  
+  standalone: true,
+  imports: [CommonModule]
 })
 export class AuthBarComponent {
-  photo: any;
+  scanning = false;
 
-  constructor(private alertController: AlertController) {}
+  constructor() { }
 
-  async takePhoto() {
-        const image = await Camera.getPhoto({
-            quality: 90,
-            allowEditing: false,
-            resultType: CameraResultType.Uri,
-            source: CameraSource.Prompt
-        });
-        console.log(image.webPath);
+  async scan() {
+    console.log('Iniciando scan...');
+    const status = await BarcodeScanner.checkPermission({ force: true });
+    console.log('Permissão:', status.granted);
+    if (!status.granted) return;
+
+    this.scanning = true;
+    document.body.classList.add('scanner-active'); 
+    await BarcodeScanner.prepare();
+    await BarcodeScanner.hideBackground();
+
+    const result = await BarcodeScanner.startScan();
+
+    this.scanning = false; 
+    BarcodeScanner.showBackground();
+    document.body.classList.remove('scanner-active');
+
+    if (result.hasContent) {
+      console.log('QR Code:', result.content);
+    } else {
+      console.log('Nenhum conteúdo encontrado');
+    }
   }
 
-  // Apresenta um alerta com a mensagem fornecida
-  async presentAlert(message: string) {
-    const alert = await this.alertController.create({
-      header: 'Atenção',
-      message,
-      buttons: ['OK'],
-    });
-    await alert.present();
-  }
+
 }

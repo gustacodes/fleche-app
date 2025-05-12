@@ -8,12 +8,19 @@
 
   <div class="qr-area">
     <img src="assets/img/qr-code2.png" alt="Ilustração QR Code" class="qr-illustration" />
-    <button class="scan-btn" (click)="takePhoto()">
+    <button class="scan-btn" (click)="scan()">
       📷 Escanear QR Code
     </button>
   </div>
-  
+
   <p class="footer-text">
     Ao escanear, você ficará visível para outros usuários presentes neste bar.
   </p>
+</div>
+
+<!-- 🔲 Overlay de leitura QR -->
+<div *ngIf="scanning" class="scanner-overlay">
+  <div class="scan-area">
+    <div class="scan-line"></div>
+  </div>
 </div>
