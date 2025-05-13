@@ -6,6 +6,7 @@ import { jwtDecode } from 'jwt-decode';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { BaresService } from 'src/app/services/bares.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router, private toastController: ToastController, private usuarioService: UsuarioService) { }
+  constructor(private authService: AuthService, private router: Router, private toastController: ToastController, private usuarioService: UsuarioService, private baresService: BaresService) { }
 
   ngOnInit(): void { }
 
@@ -43,7 +44,15 @@ export class LoginComponent implements OnInit {
         this.authService.saveToken(res.token);  
         const decodedToken: any = jwtDecode(res.token);
         this.authService.setUserFromToken(decodedToken);
-        if(this.usuarioService.getFoto(decodedToken.id) != null) {          
+
+        this.baresService.getVerificaSeUsuarioEstaOnline(decodedToken.id).subscribe(res => {         
+          if (res.message === "ONLINE") {
+            this.router.navigate(['fleche/tela-principal/', decodedToken.id])
+            return;
+          }
+        })
+
+        if (this.usuarioService.getFoto(decodedToken.id) != null) {          
           this.router.navigate(['fleche/bares']);
         } else {        
           this.router.navigate(['fleche/meu-perfil', decodedToken.id]);

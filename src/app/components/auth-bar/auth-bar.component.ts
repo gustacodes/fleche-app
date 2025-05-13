@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
+import { AuthService } from 'src/app/services/authservice.service';
+import { BaresService } from 'src/app/services/bares.service';
 
 @Component({
   selector: 'app-auth-bar',
@@ -9,33 +12,57 @@ import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
   standalone: true,
   imports: [CommonModule]
 })
-export class AuthBarComponent {
+export class AuthBarComponent implements OnInit {
   scanning = false;
 
-  constructor() { }
+  constructor(private baresService: BaresService, private authService: AuthService, private router: Router) { }
+
+  ngOnInit(): void {
+
+  }
 
   async scan() {
-    console.log('Iniciando scan...');
     const status = await BarcodeScanner.checkPermission({ force: true });
-    console.log('Permissão:', status.granted);
     if (!status.granted) return;
 
     this.scanning = true;
-    document.body.classList.add('scanner-active'); 
+    document.body.classList.add('scanner-active');
     await BarcodeScanner.prepare();
     await BarcodeScanner.hideBackground();
-
     const result = await BarcodeScanner.startScan();
 
-    this.scanning = false; 
+    this.scanning = false;
     BarcodeScanner.showBackground();
     document.body.classList.remove('scanner-active');
 
-    if (result.hasContent) {
-      console.log('QR Code:', result.content);
-    } else {
-      console.log('Nenhum conteúdo encontrado');
-    }
+    this.authService.usuario.subscribe(res => {
+      if (!result.hasContent || !result.content) {
+        console.log('Nenhum conteúdo encontrado no QR Code.');
+        return;
+      }
+
+      const dados = {
+        usuarioId: res.id,
+        qrCode: result.content
+      };
+      
+      this.baresService.postCheckIn(dados).subscribe({
+        next: response => {
+          if (response.message === "Check-in realizado!") {
+            this.router.navigate(['fleche/tela-principal/', res.id]);
+          } else {
+            console.error('Falha na autenticação!');
+          }
+        },
+        error: err => {
+          const errorMsg = err.error?.message || JSON.stringify(err.error) || 'Erro desconhecido';
+          console.error('Erro ao fazer check-in:', errorMsg);
+        }
+      });
+
+    });
+
+
   }
 
 

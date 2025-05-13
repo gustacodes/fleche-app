@@ -17,8 +17,12 @@ export class BaresService {
     return this.http.get<UsuariosOnlineBares[]>(`${this.apiUrl}/sessao/usuarios/${usuarioId}/online`);
   }
 
-  postCheckIn(dados: { usuarioId: number; qrCode: string }){
-    return this.http.post<{ status: string }>(`${this.apiUrl}/sessao/checkin`, dados);
+  postCheckIn(dados: { usuarioId: number; qrCode: string }) {
+  return this.http.post<{ message: string }>(`${this.apiUrl}/sessao/checkin`, dados);
+}
+
+  getVerificaSeUsuarioEstaOnline(usuarioId: number) {
+    return this.http.get<{ message: string }>(`${this.apiUrl}/sessao/usuario/${usuarioId}/autenticado`);
   }
   
 }
