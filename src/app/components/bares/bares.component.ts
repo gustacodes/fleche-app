@@ -6,6 +6,7 @@ import { BaresService } from 'src/app/services/bares.service';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CustomTabBarComponent } from '../custom-tab-bar/custom-tab-bar.component';
 
 @Component({
   selector: 'app-bares',
@@ -15,7 +16,8 @@ import { Router } from '@angular/router';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    IonicModule],
+    IonicModule,
+    CustomTabBarComponent],
   styleUrls: ['./bares.component.scss'],
 })
 export class BaresComponent  implements OnInit {
@@ -43,7 +45,7 @@ export class BaresComponent  implements OnInit {
   } 
 
   autenticar() {
-    this.router.navigate(['fleche/auth-bar'])
+    this.router.navigate(['auth-bar'])
   }
 
 }

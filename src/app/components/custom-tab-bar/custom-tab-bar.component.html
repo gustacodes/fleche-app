@@ -1,0 +1,26 @@
+<div class="custom-tab-bar">
+  
+  <div class="tab-button" [routerLink]="'/meus-dados'">
+    <ion-icon name="chatbubbles-outline" ></ion-icon>
+    <span>Chat</span>
+  </div>
+  
+  <div class="tab-button" routerLink="/extrato">
+    <ion-icon name="document-outline"></ion-icon>
+    <span>Extrato</span>
+  </div>
+
+  <ion-button class="center-button" [routerLink]="'/auth-bar'" fill="clear">
+  <img src="assets/img/qr-code-main.png" alt="Fleche" />
+  </ion-button>
+
+
+  <div class="tab-button" routerLink="/carteira">
+    <ion-icon name="wallet-outline"></ion-icon>
+    <span>Carteira</span>
+  </div>
+  <div class="tab-button" routerLink="/menu">
+    <ion-icon name="menu-outline"></ion-icon>
+    <span>Menu</span>
+  </div>
+</div>

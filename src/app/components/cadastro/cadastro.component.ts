@@ -43,7 +43,7 @@ export class CadastroComponent {
     if (this.cadastroForm.valid) {  
       this.usuarioService.cadastro(this.cadastroForm.value).subscribe(
         resposta => {
-          this.router.navigate(['fleche/login']);
+          this.router.navigate(['login']);
         },
         erro => {
           console.error('Erro ao cadastrar:', erro);

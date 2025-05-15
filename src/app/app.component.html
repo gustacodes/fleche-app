@@ -1,3 +1,5 @@
+<!-- app.component.html -->
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <router-outlet></router-outlet>
+  <app-custom-tab-bar *ngIf="showTabs"></app-custom-tab-bar>
 </ion-app>

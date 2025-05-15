@@ -43,7 +43,7 @@ export class TelaPrincipalComponent implements OnInit {
       this.carregarFoto(usuarioSelecionado.id);
       this.usuarioOnline = usuarioSelecionado;
     } else {
-       this.router.navigate(['fleche/sem-fleche'])
+       this.router.navigate(['sem-fleche'])
     }
   }
 

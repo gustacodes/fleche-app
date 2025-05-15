@@ -3,7 +3,7 @@ import { RouteReuseStrategy, provideRouter, withPreloading, PreloadAllModules } 
 import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalone';
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { AppComponent } from './app/app.component';
-import { routes } from './app/app.routes';
+import { routes } from './app/app-routing.module';
 import { AuthInterceptor } from './app/components/interceptor/auth.interceptor';
 
 bootstrapApplication(AppComponent, {

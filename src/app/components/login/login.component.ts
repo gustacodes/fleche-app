@@ -47,15 +47,15 @@ export class LoginComponent implements OnInit {
 
         this.baresService.getVerificaSeUsuarioEstaOnline(decodedToken.id).subscribe(res => {         
           if (res.message === "ONLINE") {
-            this.router.navigate(['fleche/tela-principal/', decodedToken.id])
+            this.router.navigate(['tela-principal/', decodedToken.id])
             return;
           }
         })
 
         if (this.usuarioService.getFoto(decodedToken.id) != null) {          
-          this.router.navigate(['fleche/bares']);
+          this.router.navigate(['bares']);
         } else {        
-          this.router.navigate(['fleche/meu-perfil', decodedToken.id]);
+          this.router.navigate(['meu-perfil', decodedToken.id]);
         }
       },
       error: (err) => {
@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
   }
 
   irParaCadastro() {
-    this.router.navigate(['fleche/cadastro']);
+    this.router.navigate(['cadastro']);
   }
 
 }

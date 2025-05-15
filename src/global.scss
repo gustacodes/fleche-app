@@ -48,41 +48,10 @@ ion-content {
 }
 
 /* Estilização da Tab Bar */
-ion-tab-bar {
-  --background: #2b1156;
-  height: 75px;
-  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.3);
-  padding-bottom: env(safe-area-inset-bottom);
-  width: 100% !important;
-  margin: 0 !important;
-  border-radius: 12px 12px 0 0; /* ↖ ↗ ↘ ↙ (apenas topo arredondado) */
-  position: fixed;
-  bottom: 0;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
 
 
 
-ion-tab-button {
-  --color: #d4d4d4;
-  --color-selected: #5a41a0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
 
-ion-tab-button.tab-selected::after {
-  content: '';
-  display: block;
-  background-color: #5a41a0;
-  width: 20px;
-  height: 2px;
-  margin-top: 4px;
-  border-radius: 1px;
-}
 
 body.scanner-active ion-content,
 body.scanner-active .qr-auth-container {
